@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            padding: 20px 30px;
+            background: rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #667eea;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+
+        /* Create Patient Button Styling */
+        .create-btn {
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }       
+
+        .back-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        .action-links a {
+            margin: 0 5px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .edit {
+            color: #28a745;
+        }
+
+        .delete {
+            color: #dc3545;
+        }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media(max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="navbar-brand">HospitalSys</div>
+    
+    <a href="/dashboard" class="back-btn">← Dashboard</a>
+    
+    <a href="/patients/create" class="create-btn">+ New Patient</a>
+</nav>
+   
+
+
+
+<div class="content">
+    <div class="container">
+
+        <h1>Patients</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for p in patients %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.phone }}</td>
+                <td class="action-links">
+                <a href="/patients/{{ p.id }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                <a href="/patients/{{ p.id }}/delete" class="btn btn-sm btn-danger ms-2">Delete</a>  
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
