@@ -117,12 +117,12 @@
     </select>
 
     <!-- Date Time -->
-    <input type="datetime-local" name="appointment_time"
-           value="{{ appointment.appointment_time|date:'Y-m-d\\TH:i' }}">
+    <input type="datetime-local" name="time"
+           value="{{ appointment.time|date:'Y-m-d\\TH:i' }}">
 
     <!-- Status -->
-    <input type="text" name="appointment_status"
-           value="{{ appointment.appointment_status }}">
+    <input type="text" name="status"
+           value="{{ appointment.status }}">
 
     <button type="submit">Save Changes</button>
 </form>
