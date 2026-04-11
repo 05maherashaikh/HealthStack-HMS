@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,30 +138,32 @@
     
     <a href="/dashboard" class="back-btn">← Dashboard</a>
     
-    <a href="/doctors/create" class="create-btn">+ New Doctor</a>
+    <a href="/appointments/create" class="create-btn">+ New Appointment</a>
 </nav>
 
 <div class="content">
     <div class="container">
 
-        <h1>Doctors</h1>
+        <h1>Appointments</h1>
 
         <table>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
-                <th>Specialization</th>
+                <th>Doctor</th>
+                <th>Time</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
 
-            {% for d in doctors %}
+            {% for a in appointments %}
             <tr>
-                <td>{{ d.id }}</td>
-                <td>{{ d.name }}</td>
-                <td>{{ d.specialization }}</td>
+               <td>{{ appointment.patient.name }}</td>
+               <td>{{ appointment.doctor.name }}</td>
+               <td>{{ appointment.appointment_time }}</td>
+               <td>{{ appointment.appointment_status }}</td>
                 <td class="action-links">
-                    <a href="/doctors/{{ d.id }}/edit" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="/doctors/{{ d.id }}/delete" class="btn btn-sm btn-danger ms-2">Delete</a>
+                    <a href="/appointments/{{ a.id }}/edit" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="/appointments/{{ a.id }}/delete" class="btn btn-sm btn-danger ms-2">Delete</a>
                 </td>
             </tr>
             {% endfor %}

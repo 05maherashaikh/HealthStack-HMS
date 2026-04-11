@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-nc^2w@ze7ryj7fyf^*@vp317^@m*^u#v3-@t&@-(g*fl4tbxsx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,6 +56,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CSRF_TRUSTED_ORIGINS = [
+#     ''
+#     ]
+
 ROOT_URLCONF = 'hospitalsys.urls'
 
 TEMPLATES = [
@@ -80,10 +85,19 @@ WSGI_APPLICATION = 'hospitalsys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', default='5432'),
+         'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
-}
+  }
+    
+
 
 
 # Password validation
@@ -127,3 +141,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL= '/login/'
+
+RESEND_API_KEY= config('RESEND_API_KEY')
+GEMINI_API_KEY= config('GEMINI_API_KEY')
