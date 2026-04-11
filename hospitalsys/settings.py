@@ -56,9 +56,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CSRF_TRUSTED_ORIGINS = [
-#     ''
-#     ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://hospitalsys-cm2s.onrender.com'
+]
 
 ROOT_URLCONF = 'hospitalsys.urls'
 
