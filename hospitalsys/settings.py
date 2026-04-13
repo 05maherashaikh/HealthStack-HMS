@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://hospitalsys-cm2s.onrender.com'
+    'https://healthstack-hms.onrender.com'
 ]
 
 ROOT_URLCONF = 'hospitalsys.urls'
